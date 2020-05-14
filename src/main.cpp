@@ -53,39 +53,26 @@ int main(int argc, const char **argv)
         else
             osm_data = std::move(*data);
     }
-    
-    std::cout << "data read";
 
     // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
     // user input for these values using std::cin. Pass the user input to the
     // RoutePlanner object below 
-    // std::string inp_coordinates;
-    // float start_x, start_y, end_x, end_y;
-    // std::cout << "Enter x coordinate of starting point:";
-    // std::cin >> start_x;
-    // std::cout << "Enter y coordinate of starting point:";
-    // std::cin >> start_y;
-    // std::cout << "Enter x coordinate of end point:";
-    // std::cin >> end_x;
-    // std::cout << "Enter y coordinate of end point:";
-    // std::cin >> end_y;
-    //std::cin >> inp_coordinates;
-    //create a stream of input string
-    //std::istringstream coord_stream(inp_coordinates);
-    // coord_stream >> start_x;
-    // coord_stream >> start_y;
-    // coord_stream >> end_x;
-    // coord_stream >> end_y;
-    
-    //std::cout << start_x << " " << start_y << " " << end_x << " " << end_y << std::endl;
+    float start_x, start_y, end_x, end_y;
+    std::cout << "Enter x coordinate of starting point:";
+    std::cin >> start_x;
+    std::cout << "Enter y coordinate of starting point:";
+    std::cin >> start_y;
+    std::cout << "Enter x coordinate of end point:";
+    std::cin >> end_x;
+    std::cout << "Enter y coordinate of end point:";
+    std::cin >> end_y;
 
     std::cout << "creating model ...";
     // Build Model.
     RouteModel model{osm_data};
     std::cout << "model created";
     // Create RoutePlanner object and perform A* search.
-    RoutePlanner route_planner{model, 10.0,10.0,90.0,90.0};
-    //RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
 
     std::cout << "routplanner constructed";
     route_planner.AStarSearch();
